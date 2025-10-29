@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Payment {
+  id                       Int       @id @default(autoincrement())
+  eventId                  Int?      @map("event_id")
+  registrationId           Int?      @map("registration_id")
+  transactionId            String    @unique @map("transaction_id")
+  nameEnquiryTransactionId String?   @map("name_enquiry_transaction_id")
+  partnerCode              String    @map("partner_code")
+  destBank                 String    @map("dest_bank")
+  accountNumber            String    @map("account_number")
+  accountName              String    @map("account_name")
+  amount                   Float
+  narration                String?
+  status                   String    @default("pending")
+  response                 String?
+  verificationResponse     String?   @map("verification_response")
+  createdAt                DateTime  @default(now()) @map("created_at")
+  updatedAt                DateTime  @default(now()) @updatedAt @map("updated_at")
+  completedAt              DateTime? @map("completed_at")
+
+  @@map("payments")
+}

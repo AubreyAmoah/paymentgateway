@@ -1,0 +1,28 @@
+--Authentication API
+https://dcmapitest.dcm-gh.com/User/Login
+POST
+{
+"username":"dcmtest",
+"userpassword":"Dcm@2024"
+}
+
+--Collections API
+
+https://dcmapitest.dcm-gh.com/Transaction/Collection
+POST
+AUthorization Bearer Token
+{
+    "PartnerCode": "DCM",
+    "DestBank": "300592",
+    "Accountnumber": "233577553236",
+    "AccountName": "Harold Ebenezer Brew",
+    "Amount": "1.10",
+    "TransactionID": "110102010105493",
+    "narration": "DCM Test"
+}
+
+
+--Name Enquiry API
+https://dcmapisandbox.dcm-gh.com/Transaction/NameEnquiry?PartnerCode=testDCM&TransactionID=10003100114163&BankCode=300591&NECAccount=233554013980
+GET
+AUthorization Bearer Token
